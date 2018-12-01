@@ -13,6 +13,7 @@ public class Blockling : MonoBehaviour
     [SerializeField] private string command;
     [SerializeField] private GameObject[] commanders;
     [SerializeField] private bool grounded;
+    [SerializeField] private bool isLeader = false;
 
     private Rigidbody rb;
 
@@ -33,8 +34,9 @@ public class Blockling : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        if (command == "EnterLift")
+        if (isLeader)
+            gameObject.GetComponent<Renderer>().material.color = Color.green;
+        if (command == "EnterLift" && isLeader == true) 
         {
             EnterLift();
         }
@@ -50,6 +52,15 @@ public class Blockling : MonoBehaviour
             Jump();
             Invoke("Return", 0.2f);
         }
+
+        if (command == "DirectionCommander")
+        {
+            CreateCommander(commanders[1]);
+
+            BlocklingManager.instance.KillBlockling();
+
+            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
         
         if (command == "JumpCommander")
         {
@@ -58,9 +69,10 @@ public class Blockling : MonoBehaviour
 
             BlocklingManager.instance.KillBlockling();
 
-            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            this.gameObject.GetComponent<MeshRenderer>().enabled = false; 
             
         }
+
 
         
        
@@ -105,27 +117,30 @@ public class Blockling : MonoBehaviour
     {
         
             speed = 0;
-
-            rb.isKinematic = true;
-        
-
+               
             gameObject.layer = 10;
 
-            BlocklingManager.instance.RemoveBlockling();
-        
+            BlocklingManager.instance.KillBlockling();
+
+            isLeader = false;
     }
 
     private void EnterLift()
     {
-        BlocklingManager.instance.KillBlockling();
-
-        this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        Stop();
+        this.gameObject.SetActive(false);
+     
     }
 
    
     private void CreateCommander(GameObject selectedcommander)
     {
         Instantiate(selectedcommander, this.transform);
+    }
+
+    public void MakeLeader()
+    {
+        isLeader = true;
     }
 
     public void SendCommand(string sentcommand)

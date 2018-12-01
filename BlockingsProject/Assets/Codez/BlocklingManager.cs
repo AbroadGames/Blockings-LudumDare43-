@@ -11,7 +11,7 @@ public class BlocklingManager : MonoBehaviour
 
     [SerializeField] private List<Blockling> blocklings;
 
-    
+     
 
     void Awake()
     {
@@ -30,12 +30,13 @@ public class BlocklingManager : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        blocklingTotal = 5;
+        
     }
 
     private void Update()
     {
-       
+        if (blocklings.Count > 0)
+        blocklings[0].MakeLeader();
     }
 
 
@@ -48,10 +49,7 @@ public class BlocklingManager : MonoBehaviour
         
     } 
 
-    public void RemoveBlockling()
-    {       
-        blocklings.RemoveAt(0);
-    }
+    
 
     public void KillBlockling()
     {
