@@ -75,9 +75,22 @@ public class Blockling : MonoBehaviour
             
         }
 
+        if (command == "PlatformCommander")
+        {
 
-        
-       
+            CreateCommander(commanders[2]);
+
+            BlocklingManager.instance.KillBlockling();
+
+            rb.isKinematic = true;
+
+            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+        }
+
+
+
+
     }
 
   
