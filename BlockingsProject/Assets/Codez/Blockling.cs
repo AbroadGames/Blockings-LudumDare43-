@@ -33,6 +33,12 @@ public class Blockling : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        if (command == "EnterLift")
+        {
+            EnterLift();
+        }
+         
         if (command == "Moving")
         {
             Moving();
@@ -60,10 +66,8 @@ public class Blockling : MonoBehaviour
        
     }
 
-    private void LateUpdate()
-    {
-       
-    } 
+  
+ 
 
     private void Moving()
     {
@@ -81,14 +85,13 @@ public class Blockling : MonoBehaviour
         { 
             speed = -3;
         }
-
-       
+     
     }
 
     private void Jump() 
     {
 
-        rb.velocity = Vector3.up * 8;
+        rb.velocity = Vector3.up * 6;
         
         
     }
@@ -96,11 +99,6 @@ public class Blockling : MonoBehaviour
     private void Return()
     {
         command = "Moving";
-    }
-
-    public void SendCommand(string sentcommand)
-    {
-        command = sentcommand;
     }
 
     private void Stop()
@@ -117,14 +115,23 @@ public class Blockling : MonoBehaviour
         
     }
 
-   
+    private void EnterLift()
+    {
+        BlocklingManager.instance.KillBlockling();
 
+        this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+   
     private void CreateCommander(GameObject selectedcommander)
     {
         Instantiate(selectedcommander, this.transform);
     }
 
-    
+    public void SendCommand(string sentcommand)
+    {
+        command = sentcommand;
+    }
 
 
 }

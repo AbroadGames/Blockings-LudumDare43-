@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BlocklingManager : MonoBehaviour
 {
     public static BlocklingManager instance = null;
@@ -34,8 +35,7 @@ public class BlocklingManager : MonoBehaviour
 
     private void Update()
     {
-        //if (blocklings.Count > 0)
-        //blocklings[0].GainInfulence();
+       
     }
 
 
