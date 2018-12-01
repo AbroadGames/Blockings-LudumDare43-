@@ -29,6 +29,7 @@ public class Blockling : MonoBehaviour
     void FixedUpdate()
     {
         Moving();
+        Stop();
     }
 
 
@@ -54,21 +55,20 @@ public class Blockling : MonoBehaviour
 
     private void Stop()
     {
+        if (Input.GetMouseButtonDown(0) && hasPlayerInfulence == true)
+        {
+            speed = 0;
 
+            hasPlayerInfulence = false;
+
+            BlocklingManager.instance.RemoveBlockling();
+        }
     }
   
     public void GainInfulence()
     {
-
+        hasPlayerInfulence = true;
     }
 
-    public void Sacrifice()
-    {
-        
-    }
-
-    
-
-
-
+  
 }
