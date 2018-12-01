@@ -9,8 +9,10 @@ public class Blockling : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     private int speed = 3;
-    [SerializeField] private bool hasPlayerInfulence = false;
-    [SerializeField] private bool isSacrificed = false;
+
+    [SerializeField] private string command;
+    [SerializeField] private GameObject[] commanders;
+    [SerializeField] private bool grounded;
 
     private Rigidbody rb;
 
@@ -18,20 +20,50 @@ public class Blockling : MonoBehaviour
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
-	} 
+
+        command = "Moving";
+    } 
 	
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+       
+
+    }
 
     void FixedUpdate()
     {
-        Moving();
-        Stop();
+        if (command == "Moving")
+        {
+            Moving();
+        }
+       
+        if (command == "Jump")
+        {
+            Moving();
+            Jump();
+            Invoke("Return", 0.2f);
+        }
+        
+        if (command == "JumpCommander")
+        {
+            
+            CreateCommander(commanders[0]);
+
+            BlocklingManager.instance.KillBlockling();
+
+            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            
+        }
+
+        
+       
     }
 
+    private void LateUpdate()
+    {
+       
+    } 
 
     private void Moving()
     {
@@ -53,22 +85,46 @@ public class Blockling : MonoBehaviour
        
     }
 
+    private void Jump() 
+    {
+
+        rb.velocity = Vector3.up * 8;
+        
+        
+    }
+
+    private void Return()
+    {
+        command = "Moving";
+    }
+
+    public void SendCommand(string sentcommand)
+    {
+        command = sentcommand;
+    }
+
     private void Stop()
     {
-        if (Input.GetMouseButtonDown(0) && hasPlayerInfulence == true)
-        {
+        
             speed = 0;
 
-            hasPlayerInfulence = false;
+            rb.isKinematic = true;
+        
+
+            gameObject.layer = 10;
 
             BlocklingManager.instance.RemoveBlockling();
-        }
-    }
-  
-    public void GainInfulence()
-    {
-        hasPlayerInfulence = true;
+        
     }
 
-  
+   
+
+    private void CreateCommander(GameObject selectedcommander)
+    {
+        Instantiate(selectedcommander, this.transform);
+    }
+
+    
+
+
 }

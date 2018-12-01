@@ -10,6 +10,8 @@ public class BlocklingManager : MonoBehaviour
 
     [SerializeField] private List<Blockling> blocklings;
 
+    
+
     void Awake()
     {
         if (instance == null)
@@ -32,8 +34,8 @@ public class BlocklingManager : MonoBehaviour
 
     private void Update()
     {
-        if (blocklings.Count > 0)
-        blocklings[0].GainInfulence();
+        //if (blocklings.Count > 0)
+        //blocklings[0].GainInfulence();
     }
 
 
@@ -44,7 +46,7 @@ public class BlocklingManager : MonoBehaviour
         blocklings.Add(_copy.GetComponent<Blockling>());
 
         
-    }
+    } 
 
     public void RemoveBlockling()
     {       
@@ -60,6 +62,16 @@ public class BlocklingManager : MonoBehaviour
     public int GetBlocklingTotal()
     {
         return blocklingTotal;
+    }
+
+    public void SetBlocklingTotal(int value)
+    {
+        blocklingTotal = value;
+    }
+
+    public void PassMessage(string message)
+    {
+        blocklings[0].SendCommand(message);
     }
 
 }
