@@ -17,7 +17,7 @@ public class BlocklingsSpawn : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        Invoke("StartSpawing", 0.1f);
+       
 
         Invoke("CounterInitialization", 0.1f);
 
@@ -25,7 +25,7 @@ public class BlocklingsSpawn : MonoBehaviour
 
     private void CounterInitialization()
     {
-        counter = localBlocklingTotal -1;
+        counter = localBlocklingTotal;
     }
 
 	
@@ -34,10 +34,10 @@ public class BlocklingsSpawn : MonoBehaviour
     {
         localBlocklingTotal = BlocklingManager.instance.GetBlocklingTotal();
 
-        blocklingstxt.text = counter.ToString();
+        blocklingstxt.text = counter.ToString(); 
     }
 
-    private void StartSpawing()
+    public void StartSpawing()
     {
         StartCoroutine("CreateBlocklings");
     }

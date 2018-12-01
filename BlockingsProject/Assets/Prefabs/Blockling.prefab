@@ -93,9 +93,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1576358075080520}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -130,4 +130,6 @@ MonoBehaviour:
   command: 
   commanders:
   - {fileID: 1357769681594164, guid: fca03463d4670af42bf9348d116da9ad, type: 2}
+  - {fileID: 1256642757998874, guid: a0ae66d89d7dff941b414702302e6b3c, type: 2}
   grounded: 0
+  isLeader: 0

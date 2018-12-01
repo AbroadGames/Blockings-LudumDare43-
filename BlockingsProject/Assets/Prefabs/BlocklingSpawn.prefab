@@ -55,4 +55,6 @@ MonoBehaviour:
   blocklingOb: {fileID: 1576358075080520, guid: 5ca0caf96a3a82a429da08a816c24972,
     type: 2}
   localBlocklingTotal: 0
+  counter: 0
   spawnDelay: 3
+  blocklingstxt: {fileID: 0}

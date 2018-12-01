@@ -51,5 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3f8dd40ce16174587dd1ad34b5c954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocklingTotal: 0
+  blocklingTotal: 15
   blocklings: []
