@@ -80,9 +80,9 @@ public class Blockling : MonoBehaviour
 
             CreateCommander(commanders[2]);
 
-            BlocklingManager.instance.KillBlockling();
-
             rb.isKinematic = true;
+
+            BlocklingManager.instance.KillBlockling();
 
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;
 

@@ -33,6 +33,7 @@ public class Goal : MonoBehaviour
     {
         BlocklingManager.instance.SetBlocklingTotal(blocklingCount);
         SceneManager.LoadScene(nextLevelIndex);
+        BlocklingManager.instance.ClearList();
     }
 
 }

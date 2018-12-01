@@ -72,4 +72,9 @@ public class BlocklingManager : MonoBehaviour
         blocklings[0].SendCommand(message);
     }
 
+    public void ClearList()
+    {
+        blocklings.Clear();
+    }
+
 }
