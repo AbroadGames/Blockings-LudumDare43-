@@ -8,7 +8,7 @@ public class BlocklingManager : MonoBehaviour
     public static BlocklingManager instance = null;
 
     [SerializeField] private int blocklingTotal;
-
+ 
     [SerializeField] private List<Blockling> blocklings;
 
      

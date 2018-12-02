@@ -15,6 +15,8 @@ public class Blockling : MonoBehaviour
     [SerializeField] private bool grounded;
     [SerializeField] private bool isLeader = false;
     [SerializeField] private AudioSource aud;
+    [SerializeField] private Renderer ren;
+    [SerializeField] private Animator ani;
 
     private Rigidbody rb;
 
@@ -29,14 +31,21 @@ public class Blockling : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 1f, layerMask))
+        {
+            ani.SetBool("Falling", false);
+        }
+        else
+            ani.SetBool("Falling", true);
 
     }
 
     void FixedUpdate()
     {
         if (isLeader)
-            gameObject.GetComponent<Renderer>().material.color = Color.green;
+            ren.material.color = Color.green;
         if (command == "EnterLift" && isLeader == true) 
         {
             EnterLift();
@@ -59,6 +68,7 @@ public class Blockling : MonoBehaviour
             Moving();
             Jump();
             Invoke("Return", 0.2f);
+            
         }
 
         if (command == "DirectionCommander")
@@ -71,7 +81,7 @@ public class Blockling : MonoBehaviour
 
             rb.constraints = RigidbodyConstraints.FreezePositionX;
 
-            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            ren.enabled = false;
         }
         
         if (command == "JumpCommander")
@@ -85,7 +95,7 @@ public class Blockling : MonoBehaviour
 
             rb.constraints = RigidbodyConstraints.FreezePositionX;
 
-            this.gameObject.GetComponent<MeshRenderer>().enabled = false; 
+            ren.enabled = false; 
             
         }
 
@@ -98,7 +108,7 @@ public class Blockling : MonoBehaviour
 
             BlocklingManager.instance.KillBlockling();
 
-            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            ren.enabled = false;
 
         }
 
@@ -140,6 +150,8 @@ public class Blockling : MonoBehaviour
                 aud.Play();
             }
         }
+
+       
      
     }
 

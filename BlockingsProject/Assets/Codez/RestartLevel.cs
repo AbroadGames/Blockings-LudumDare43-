@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class RestartLevel : MonoBehaviour {
+public class RestartLevel : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    
+
+   
+
+    public void LevelRestart(int loadedscene)
+    {
+        SceneManager.LoadScene(loadedscene);
+        BlocklingManager.instance.ClearList();
+        Time.timeScale = 1;
+    }
 }
