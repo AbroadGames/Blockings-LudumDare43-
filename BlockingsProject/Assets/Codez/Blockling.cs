@@ -68,8 +68,10 @@ public class Blockling : MonoBehaviour
         {
             
             CreateCommander(commanders[0]);
-
+             
             BlocklingManager.instance.KillBlockling();
+
+            rb.constraints = RigidbodyConstraints.FreezePositionX;
 
             this.gameObject.GetComponent<MeshRenderer>().enabled = false; 
             
