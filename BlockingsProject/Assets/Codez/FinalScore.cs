@@ -17,7 +17,7 @@ public class FinalScore : MonoBehaviour
     void Start ()
     {
         blocklingsSaved.text = BlocklingManager.instance.GetBlocklingTotal().ToString();
-        blocklingsSacrificed.text = (50 - BlocklingManager.instance.GetBlocklingTotal()).ToString();
+        blocklingsSacrificed.text = (32 - BlocklingManager.instance.GetBlocklingTotal()).ToString();
 
         Invoke("EnableSavedTxt", 1f);
         Invoke("EnableSaved", 2f);
