@@ -57,7 +57,9 @@ public class Blockling : MonoBehaviour
         {
             CreateCommander(commanders[1]);
 
-            BlocklingManager.instance.KillBlockling(); 
+            BlocklingManager.instance.KillBlockling();
+
+            rb.isKinematic = true;
 
             rb.constraints = RigidbodyConstraints.FreezePositionX;
 
@@ -70,6 +72,8 @@ public class Blockling : MonoBehaviour
             CreateCommander(commanders[0]);
              
             BlocklingManager.instance.KillBlockling();
+
+            rb.isKinematic = true;
 
             rb.constraints = RigidbodyConstraints.FreezePositionX;
 
