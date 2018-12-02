@@ -33,7 +33,7 @@ public class Blockling : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 1f, layerMask))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 0.6f, layerMask)) 
         {
             ani.SetBool("Falling", false);
         }
