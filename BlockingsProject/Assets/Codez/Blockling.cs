@@ -14,6 +14,7 @@ public class Blockling : MonoBehaviour
     [SerializeField] private GameObject[] commanders;
     [SerializeField] private bool grounded;
     [SerializeField] private bool isLeader = false;
+    [SerializeField] private AudioSource aud;
 
     private Rigidbody rb;
 
@@ -28,7 +29,7 @@ public class Blockling : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-       
+        
 
     }
 
@@ -44,6 +45,13 @@ public class Blockling : MonoBehaviour
         if (command == "Moving")
         {
             Moving();
+            //if (aud.isPlaying == false)
+            //{
+                
+            //    aud.volume = Random.Range(0.3f, 0.5f);
+            //    aud.pitch = Random.Range(0.3f, 0.5f);
+            //    aud.Play(22000); 
+            //}
         }
        
         if (command == "Jump")
@@ -112,11 +120,25 @@ public class Blockling : MonoBehaviour
         if (Physics.Raycast(transform.position, -transform.right, out hit, 0.5f ,layerMask))
         {
             speed = 3;
+            if (aud.isPlaying == false)
+            {
+
+                aud.volume = Random.Range(0.3f, 0.5f);
+                aud.pitch = Random.Range(0.3f, 0.5f);
+                aud.Play(); 
+            }
         }
 
         else if (Physics.Raycast(transform.position, transform.right, out hit, 0.5f,layerMask))
         { 
             speed = -3;
+            if (aud.isPlaying == false)
+            {
+
+                aud.volume = Random.Range(0.3f, 0.5f);
+                aud.pitch = Random.Range(0.7f, 0.9f);
+                aud.Play();
+            }
         }
      
     }

@@ -12,6 +12,7 @@ public class BlocklingsSpawn : MonoBehaviour
     [SerializeField] private int counter;
     [SerializeField] private float spawnDelay;
     [SerializeField] private Text blocklingstxt;
+    [SerializeField] AudioSource aud;
 
     
     // Use this for initialization
@@ -49,6 +50,10 @@ public class BlocklingsSpawn : MonoBehaviour
             BlocklingManager.instance.CreateBlockling(blocklingOb, blocklingSpawn);
 
             counter -= 1;
+
+            aud.volume = Random.Range(0.6f, 0.8f);
+            aud.pitch = Random.Range(0.7f, 0.9f);
+            aud.Play();
 
             yield return new WaitForSeconds(spawnDelay);
         }      

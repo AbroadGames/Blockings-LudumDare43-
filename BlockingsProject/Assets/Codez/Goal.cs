@@ -30,6 +30,11 @@ public class Goal : MonoBehaviour
     }
 
     public void NextLevel()
+    { 
+        Invoke("LevelLoad", 1.5f);
+    }
+
+    private void LevelLoad()
     {
         BlocklingManager.instance.SetBlocklingTotal(blocklingCount);
         SceneManager.LoadScene(nextLevelIndex);
