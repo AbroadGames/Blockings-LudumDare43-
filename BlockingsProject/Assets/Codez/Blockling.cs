@@ -79,9 +79,10 @@ public class Blockling : MonoBehaviour
 
             rb.isKinematic = true;
 
-            rb.constraints = RigidbodyConstraints.FreezePositionX;
+            ani.SetBool("Block", true);
 
-            ren.enabled = false;
+            ren.material.color = Color.red;
+
         }
         
         if (command == "JumpCommander")
@@ -93,10 +94,11 @@ public class Blockling : MonoBehaviour
 
             rb.isKinematic = true;
 
-            rb.constraints = RigidbodyConstraints.FreezePositionX;
+             
+            ani.SetBool("Jump", true);
 
-            ren.enabled = false; 
-            
+            ren.material.color = Color.red;
+
         }
 
         if (command == "PlatformCommander")
@@ -108,7 +110,9 @@ public class Blockling : MonoBehaviour
 
             BlocklingManager.instance.KillBlockling();
 
-            ren.enabled = false;
+            ani.SetBool("Platform", true);
+
+            ren.material.color = Color.red;
 
         }
 
@@ -202,6 +206,8 @@ public class Blockling : MonoBehaviour
     {
         command = sentcommand;
     }
+
+    
 
 
 }
